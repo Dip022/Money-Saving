@@ -102,3 +102,13 @@
   margin-left: 15px;
   background-color: #59a5ff;
 }
+/* responsive design */
+@media only screen and (max-width: 991px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .money-calculation {
+    grid-template-columns: 1fr;
+  }
+} ;
