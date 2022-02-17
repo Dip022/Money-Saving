@@ -74,8 +74,15 @@ document
       // remining balance
       const balanceTotal = document.getElementById("total-balance").innerText;
       const balanceAmount = parseFloat(balanceTotal);
-      const reminingBalance = balanceAmount - moneySaving;
-      const reminingAmount = document.getElementById("remining-balance");
-      reminingAmount.innerText = reminingBalance;
+      // remaining balance validation
+
+      if (balanceAmount > moneySaving) {
+        const reminingBalance = balanceAmount - moneySaving;
+        const reminingAmount = document.getElementById("remining-balance");
+        reminingAmount.innerText = reminingBalance;
+        savingError.innerText = "";
+      } else {
+        savingError.innerText = "Saving amount can not over total amount";
+      }
     }
   });
