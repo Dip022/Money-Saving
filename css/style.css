@@ -13,3 +13,25 @@
   color: #31a5ac;
   text-align: center;
 }
+/* money Calculation style */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 75px;
+}
+.money-calculation {
+  display: grid;
+  grid-template-columns: 54% 40%;
+  grid-gap: 73px;
+}
+.money-saving img {
+  width: 100%;
+}
+/* income money style */
+.income-money {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 58px 0 38px 0;
+  background-color: #f8f8f8;
+}
