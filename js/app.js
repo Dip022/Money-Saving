@@ -24,14 +24,20 @@ function getExpensesAmount() {
   }
 }
 
+// income amount func
+function getIncome() {
+  const moneyIncomeInput = document.getElementById("money-income");
+  const moneyIncome = parseFloat(moneyIncomeInput.value);
+  return moneyIncome;
+}
+
 // add click event
 document.getElementById("calculate").addEventListener("click", function () {
   const errorMessage = document.getElementById("expensesError");
   const totalExpensesText = document.getElementById("total-expenses");
   const expensesAmount = getExpensesAmount();
   totalExpensesText.innerText = expensesAmount;
-  const moneyIncomeInput = document.getElementById("money-income");
-  const moneyIncome = parseFloat(moneyIncomeInput.value);
+  const moneyIncome = getIncome();
   // validation income
   if (isNaN(moneyIncome)) {
     errorMessage.innerText = "Income amount only number!";
@@ -46,3 +52,30 @@ document.getElementById("calculate").addEventListener("click", function () {
     balanceTotal.innerText = balance;
   }
 });
+
+// add click event
+document
+  .getElementById("saving-balance")
+  .addEventListener("click", function () {
+    // savingError
+    const savingError = document.getElementById("savingError");
+    // saving percentage
+    const savingPercentage = getInputeMoney("saving-input");
+    const moneyIncome = getIncome();
+    // validation maney saving percentage
+    if (isNaN(savingPercentage)) {
+      savingError.innerText = "Saving percentag only number!";
+    } else if (savingPercentage < 0) {
+      savingError.innerText = "Saving percentag only positive value 0!";
+    } else {
+      const moneySaving = (moneyIncome * savingPercentage) / 100;
+      const savingAmount = document.getElementById("saving-amount");
+      savingAmount.innerText = moneySaving;
+      // remining balance
+      const balanceTotal = document.getElementById("total-balance").innerText;
+      const balanceAmount = parseFloat(balanceTotal);
+      const reminingBalance = balanceAmount - moneySaving;
+      const reminingAmount = document.getElementById("remining-balance");
+      reminingAmount.innerText = reminingBalance;
+    }
+  });
