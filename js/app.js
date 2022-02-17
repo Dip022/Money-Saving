@@ -14,9 +14,9 @@ function getExpensesAmount() {
 
   //validation expense amount
   if (isNaN(foodCost) || isNaN(rentCost) || isNaN(clothesCost)) {
-    errorMessage.innerText = "Input the only number!";
+    errorMessage.innerText = "Input value only number!";
   } else if (foodCost < 0 || rentCost < 0 || clothesCost < 0) {
-    errorMessage.innerText = "Input the positive value 0!";
+    errorMessage.innerText = "Input positive value 0!";
   } else {
     const expenseTotalAmount = foodCost + rentCost + clothesCost;
     errorMessage.innerText = "";
