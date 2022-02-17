@@ -14,7 +14,7 @@ function getExpensesAmount() {
 
   //validation expense amount
   if (isNaN(foodCost) || isNaN(rentCost) || isNaN(clothesCost)) {
-    errorMessage.innerText = "Input the only Number!";
+    errorMessage.innerText = "Input the only number!";
   } else if (foodCost < 0 || rentCost < 0 || clothesCost < 0) {
     errorMessage.innerText = "Input the positive value 0!";
   } else {
@@ -26,5 +26,23 @@ function getExpensesAmount() {
 
 // add click event
 document.getElementById("calculate").addEventListener("click", function () {
-  console.log(getExpensesAmount());
+  const errorMessage = document.getElementById("expensesError");
+  const totalExpensesText = document.getElementById("total-expenses");
+  const expensesAmount = getExpensesAmount();
+  totalExpensesText.innerText = expensesAmount;
+  const moneyIncomeInput = document.getElementById("money-income");
+  const moneyIncome = parseFloat(moneyIncomeInput.value);
+  // validation income
+  if (isNaN(moneyIncome)) {
+    errorMessage.innerText = "Income amount only number!";
+  } else if (moneyIncome < 0) {
+    errorMessage.innerText = "Income amount positive value 0!";
+  } else {
+    if (expensesAmount > moneyIncome) {
+      errorMessage.innerText = "Expenses amount can not over income!";
+    }
+    const balance = moneyIncome - expensesAmount;
+    const balanceTotal = document.getElementById("total-balance");
+    balanceTotal.innerText = balance;
+  }
 });
